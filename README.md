@@ -1,4 +1,5 @@
 
+
 ## Run it locally
 
 ```bash
@@ -16,6 +17,7 @@ npm run start
 ```
 
 
+
 ## Structure
 
 ```
@@ -30,10 +32,4 @@ components/
   Navbar.jsx, Footer.jsx, Stamp.jsx
 ```
 
-## Design concept
-
-A "case file" visual language instead of the generic navy-and-gold law-firm template:
-folder-tab navigation, ink-stamp badges, monospace case numbers/file codes, document corner-folds.
-Colors and fonts are defined in `tailwind.config.js` (`ink`, `paper`, `oxblood`) and loaded via
-Google Fonts in `globals.css` (Fraunces / Source Sans 3 / IBM Plex Mono).
 
