@@ -17,13 +17,13 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-paper/95 backdrop-blur-sm border-b border-paper-line">
+    <header className="sticky top-0 z-50 bg-paper/90 backdrop-blur-sm border-b border-paper-line transition-all duration-300">
       <div className="max-w-6xl mx-auto px-5 md:px-8">
         <div className="flex items-center justify-between h-20">
-          <Link href="/" className="flex items-center gap-2.5 shrink-0" onClick={() => setOpen(false)}>
-            <Scale size={26} className="text-oxblood" strokeWidth={1.75} />
-            <span className="font-display text-xl tracking-tight text-ink">
-              Brennan <span className="italic">Injury Law</span>
+          <Link href="/" className="group flex items-center gap-2.5 shrink-0" onClick={() => setOpen(false)}>
+            <Scale size={26} className="text-oxblood group-hover:rotate-12 transition-transform duration-300" strokeWidth={1.75} />
+            <span className="font-display text-xl tracking-tight text-ink group-hover:text-oxblood transition-colors duration-300">
+              Brennan <span className="italic font-semibold">Injury Law</span>
             </span>
           </Link>
 
@@ -33,7 +33,7 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 data-active={pathname === link.href}
-                className="folder-tab text-ink/80 hover:text-ink pb-1"
+                className="folder-tab text-ink/85 hover:text-oxblood pb-1 transition-colors duration-200"
               >
                 {link.label.toUpperCase()}
               </Link>

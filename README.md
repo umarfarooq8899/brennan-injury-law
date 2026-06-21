@@ -32,5 +32,4 @@ components/
   Navbar.jsx, Footer.jsx, Stamp.jsx
 ```
 
-, and stats with the real client's info.
-- Swap the monogram avatar for a real headshot if the client has one.
+
