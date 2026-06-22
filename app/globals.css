@@ -248,3 +248,58 @@ select:focus-visible {
   clip-path: polygon(0 0, 85% 0, 100% 100%, 0% 100%);
 }
 
+/* Polaroid / photo-pinned frame */
+.photo-polaroid {
+  background: #fff;
+  padding: 10px 10px 32px 10px;
+  box-shadow: 0 4px 12px rgba(27,36,48,0.18), 0 1px 3px rgba(27,36,48,0.10);
+}
+
+/* Paperclip pin graphic (top-center) */
+.photo-pinned {
+  position: relative;
+}
+.photo-pinned::before {
+  content: '';
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 28px;
+  border: 3px solid #b0a898;
+  border-radius: 10px 10px 0 0;
+  border-bottom: none;
+  z-index: 10;
+  background: transparent;
+}
+
+/* Fade-in-up animation for sections */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeInUp {
+  animation: fadeInUp 0.7s cubic-bezier(0.25, 1, 0.5, 1) both;
+}
+.animate-fadeInUp-delay-1 { animation-delay: 0.1s; }
+.animate-fadeInUp-delay-2 { animation-delay: 0.2s; }
+.animate-fadeInUp-delay-3 { animation-delay: 0.35s; }
+
+/* Attorney card hover lift */
+.attorney-card {
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+              box-shadow 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.attorney-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(27,36,48,0.13);
+}
+
+/* Case results ledger row hover */
+.ledger-row {
+  transition: background 0.18s ease;
+}
+.ledger-row:hover {
+  background: rgba(139, 38, 53, 0.04);
+}
