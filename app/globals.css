@@ -1,12 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --paper-grain: radial-gradient(circle at 1px 1px, rgba(27, 36, 48, 0.045) 1px, transparent 0);
-}
+/* ─── Base Reset ─────────────────────────────────────────────── */
 
 * {
   box-sizing: border-box;
@@ -17,20 +15,20 @@ html {
 }
 
 body {
-  background-color: #F2EEE4;
-  background-image: var(--paper-grain);
-  background-size: 18px 18px;
-  color: #1B2430;
-  font-family: 'Source Sans 3', sans-serif;
+  background-color: #FAFAF8;
+  color: #111111;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Visible keyboard focus, always */
+/* Visible keyboard focus */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
-  outline: 2px solid #8B2635;
+  outline: 2px solid #111111;
   outline-offset: 3px;
 }
 
@@ -43,263 +41,397 @@ select:focus-visible {
   }
 }
 
-/* ---- Case-file design system ---- */
+/* ─── Typography Utilities ───────────────────────────────────── */
 
 .eyebrow {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.18em;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
+  color: #6B6B6B;
 }
 
-/* Folder-tab navigation */
-.folder-tab {
+.display-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+}
+
+/* ─── Navbar ─────────────────────────────────────────────────── */
+
+.navbar-transparent {
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  backdrop-filter: none;
+}
+
+.navbar-solid {
+  background: rgba(250, 250, 248, 0.95);
+  border-bottom: 1px solid #DEDAD3;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 1px 24px rgba(0, 0, 0, 0.06);
+}
+
+/* Nav link underline effect */
+.nav-link {
   position: relative;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.78rem;
-  letter-spacing: 0.04em;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: #111111;
+  transition: color 0.2s ease;
 }
 
-.folder-tab::after {
+.nav-link::after {
   content: '';
   position: absolute;
   left: 0;
-  bottom: -1px;
-  height: 2px;
+  bottom: -2px;
+  height: 1px;
   width: 0%;
-  background: #8B2635;
+  background: #111111;
   transition: width 0.25s ease;
 }
 
-.folder-tab[data-active="true"]::after,
-.folder-tab:hover::after {
+.nav-link:hover::after,
+.nav-link[data-active="true"]::after {
   width: 100%;
 }
 
-/* Ink stamp badge */
-.stamp {
+/* ─── Section Layouts ────────────────────────────────────────── */
+
+.section-pad {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+@media (min-width: 768px) {
+  .section-pad {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+}
+
+/* ─── Practice Area Cards ────────────────────────────────────── */
+
+.practice-card {
   position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.practice-card img {
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.practice-card:hover img {
+  transform: scale(1.06);
+}
+
+.practice-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.18) 55%, transparent 100%);
+  transition: background 0.4s ease;
+}
+
+.practice-card:hover .practice-card-overlay {
+  background: linear-gradient(to top, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.28) 60%, rgba(0,0,0,0.05) 100%);
+}
+
+/* ─── Attorney Cards ─────────────────────────────────────────── */
+
+.attorney-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+              box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.attorney-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.12);
+}
+
+.attorney-card img {
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.attorney-card:hover img {
+  transform: scale(1.04);
+}
+
+/* ─── Testimonial Cards ──────────────────────────────────────── */
+
+.testimonial-card {
+  background: #ffffff;
+  border: 1px solid #DEDAD3;
+  padding: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* ─── Process Step ───────────────────────────────────────────── */
+
+.process-step {
+  position: relative;
+}
+
+.process-step-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 5rem;
+  font-weight: 300;
+  line-height: 1;
+  color: #DEDAD3;
+  position: absolute;
+  top: -1.5rem;
+  left: -0.5rem;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ─── Case Result Cards ──────────────────────────────────────── */
+
+.result-card {
+  background: #ffffff;
+  border: 1px solid #DEDAD3;
+  border-left: 3px solid #111111;
+  padding: 1.5rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.result-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+/* ─── CTA / Button Styles ────────────────────────────────────── */
+
+.btn-primary {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  border: 2px solid currentColor;
-  border-radius: 9999px;
-  font-family: 'IBM Plex Mono', monospace;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  transform: rotate(-7deg);
-  position: relative;
+  gap: 0.625rem;
+  background: #111111;
+  color: #FAFAF8;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 1rem 2rem;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
-.stamp::before {
-  content: '';
-  position: absolute;
-  inset: 5px;
-  border: 1px solid currentColor;
-  border-radius: 9999px;
-  opacity: 0.55;
+.btn-primary:hover {
+  background: #2C2C2C;
+  transform: translateY(-1px);
 }
 
-/* Dotted "sign here" style divider */
-.thread-line {
-  border-top: 1px dashed #C9C2AC;
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  background: transparent;
+  color: #111111;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 1rem 2rem;
+  border: 1.5px solid #111111;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
-/* Document corner-fold */
-.case-card {
-  position: relative;
-  background: #F7F4EC;
-  border: 1px solid #C9C2AC;
-  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+.btn-outline:hover {
+  background: #111111;
+  color: #FAFAF8;
 }
 
-.case-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 0 18px 18px 0;
-  border-color: transparent #E8E1D1 transparent transparent;
-  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #111111;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  border-bottom: 1px solid #111111;
+  padding-bottom: 2px;
+  transition: gap 0.2s ease, opacity 0.2s ease;
 }
 
-.tab-notch {
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+.btn-ghost:hover {
+  gap: 0.75rem;
+  opacity: 0.7;
 }
 
-/* --- Premium Case-File Enhancements --- */
+/* ─── Gold Accent Line ───────────────────────────────────────── */
 
-/* Stacked paper shadow effect */
-.shadow-paper-stacked {
-  box-shadow:
-    0 1px 2px rgba(27, 36, 48, 0.05),
-    2px 2px 0 #E8E1D1,
-    2px 2px 1px #C9C2AC,
-    4px 4px 0 #F2EEE4,
-    4px 4px 2px #C9C2AC,
-    6px 6px 0 #E8E1D1,
-    6px 6px 3px #C9C2AC;
-  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+.gold-line {
+  display: block;
+  width: 3rem;
+  height: 1.5px;
+  background: #C9A96E;
+  margin-bottom: 1rem;
 }
 
-.shadow-paper-stacked:hover {
-  transform: translate(-2px, -2px);
-  box-shadow:
-    0 4px 12px rgba(27, 36, 48, 0.08),
-    3px 3px 0 #E8E1D1,
-    3px 3px 2px #C9C2AC,
-    6px 6px 0 #F2EEE4,
-    6px 6px 3px #C9C2AC,
-    9px 9px 0 #E8E1D1,
-    9px 9px 4px #C9C2AC;
+/* ─── Divider ────────────────────────────────────────────────── */
+
+.section-divider {
+  border: none;
+  border-top: 1px solid #DEDAD3;
 }
 
-/* Legal case-file ledger line backgrounds */
-.ledger-paper {
-  background-color: #F8F6F0;
-  background-image: 
-    linear-gradient(#E8E1D1 1px, transparent 1px),
-    linear-gradient(90deg, rgba(139, 38, 53, 0.15) 1px, transparent 1px);
-  background-size: 100% 1.75rem, 100% 100%;
-  background-position: 0 0.5rem, 3.5rem 0;
-  line-height: 1.75rem;
-}
+/* ─── Smooth accordion / drawer transitions ──────────────────── */
 
-/* Formal Warning Stripe Border */
-.slant-stripes {
-  background: repeating-linear-gradient(
-    -45deg,
-    #8B2635,
-    #8B2635 12px,
-    #F2EEE4 12px,
-    #F2EEE4 24px
-  );
-}
-
-.slant-stripes-muted {
-  background: repeating-linear-gradient(
-    -45deg,
-    rgba(139, 38, 53, 0.1) 0,
-    rgba(139, 38, 53, 0.1) 8px,
-    transparent 8px,
-    transparent 16px
-  );
-}
-
-/* Stamping press keyframe animation */
-@keyframes stamp-press {
-  0% {
-    transform: scale(2.2) rotate(-35deg);
-    opacity: 0;
-    filter: blur(6px);
-  }
-  45% {
-    transform: scale(0.92) rotate(-6deg);
-    opacity: 0.95;
-    filter: blur(1px);
-  }
-  75% {
-    transform: scale(1.05) rotate(-9deg);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1) rotate(-7deg);
-    opacity: 1;
-    filter: blur(0);
-  }
-}
-
-.animate-stamp {
-  animation: stamp-press 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.15) forwards;
-}
-
-/* Shaking stamp hover simulation */
-@keyframes stamp-wiggle {
-  0%, 100% { transform: rotate(-7deg); }
-  25% { transform: rotate(-9deg) scale(1.02); }
-  75% { transform: rotate(-5deg) scale(1.02); }
-}
-
-.stamp:hover {
-  animation: stamp-wiggle 0.3s ease-in-out infinite;
-}
-
-/* Typing cursor blinking */
-@keyframes blink {
-  50% { border-color: transparent; }
-}
-
-.typewriter-cursor {
-  border-right: 3px solid #8B2635;
-  animation: blink 0.8s step-end infinite;
-}
-
-/* Smooth custom accordion / drawer transitions */
 .transition-drawer {
   transition: max-height 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
 }
 
-/* Interactive index tab shapes */
-.index-tab {
-  clip-path: polygon(0 0, 85% 0, 100% 100%, 0% 100%);
-}
+/* ─── Fade-in-up animation ───────────────────────────────────── */
 
-/* Polaroid / photo-pinned frame */
-.photo-polaroid {
-  background: #fff;
-  padding: 10px 10px 32px 10px;
-  box-shadow: 0 4px 12px rgba(27,36,48,0.18), 0 1px 3px rgba(27,36,48,0.10);
-}
-
-/* Paperclip pin graphic (top-center) */
-.photo-pinned {
-  position: relative;
-}
-.photo-pinned::before {
-  content: '';
-  position: absolute;
-  top: -14px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 18px;
-  height: 28px;
-  border: 3px solid #b0a898;
-  border-radius: 10px 10px 0 0;
-  border-bottom: none;
-  z-index: 10;
-  background: transparent;
-}
-
-/* Fade-in-up animation for sections */
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(24px); }
+  from { opacity: 0; transform: translateY(28px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
 .animate-fadeInUp {
-  animation: fadeInUp 0.7s cubic-bezier(0.25, 1, 0.5, 1) both;
+  animation: fadeInUp 0.8s cubic-bezier(0.25, 1, 0.5, 1) both;
 }
+
 .animate-fadeInUp-delay-1 { animation-delay: 0.1s; }
-.animate-fadeInUp-delay-2 { animation-delay: 0.2s; }
-.animate-fadeInUp-delay-3 { animation-delay: 0.35s; }
+.animate-fadeInUp-delay-2 { animation-delay: 0.22s; }
+.animate-fadeInUp-delay-3 { animation-delay: 0.34s; }
 
-/* Attorney card hover lift */
-.attorney-card {
-  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1),
-              box-shadow 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-}
-.attorney-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 40px rgba(27,36,48,0.13);
+/* ─── GPU Performance Hints ──────────────────────────────────── */
+
+.attorney-card,
+.practice-card,
+.testimonial-card,
+.result-card {
+  will-change: transform;
+  transform: translateZ(0);
 }
 
-/* Case results ledger row hover */
-.ledger-row {
-  transition: background 0.18s ease;
+/* ─── Gold line draw-in (driven by Framer Motion width) ──────── */
+
+.gold-line-animated {
+  display: block;
+  height: 1.5px;
+  background: #C9A96E;
+  margin-bottom: 1rem;
+  transform-origin: left center;
 }
-.ledger-row:hover {
-  background: rgba(139, 38, 53, 0.04);
+
+/* ─── Text clip reveal (hero heading words) ──────────────────── */
+
+.word-clip {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.word-clip > span {
+  display: inline-block;
+}
+
+/* ─── Shimmer loading effect ─────────────────────────────────── */
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ─── Connecting line draw animation ─────────────────────────── */
+
+@keyframes drawLine {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+.draw-line {
+  transform-origin: left center;
+  animation: drawLine 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation-play-state: paused;
+}
+
+.draw-line.visible {
+  animation-play-state: running;
+}
+
+/* ─── Subtle floating animation for hero badge ───────────────── */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-4px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* ─── Pulse ring for CTA ─────────────────────────────────────── */
+
+@keyframes pulseRing {
+  0%   { box-shadow: 0 0 0 0 rgba(17, 17, 17, 0.2); }
+  70%  { box-shadow: 0 0 0 12px rgba(17, 17, 17, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(17, 17, 17, 0); }
+}
+
+.animate-pulse-ring {
+  animation: pulseRing 2.5s ease-out infinite;
+}
+
+/* ─── Smooth number reveal ───────────────────────────────────── */
+
+@keyframes numberReveal {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ─── Input Styles ───────────────────────────────────────────── */
+
+.field-input {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #DEDAD3;
+  padding: 0.75rem 1rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  color: #111111;
+  transition: border-color 0.2s ease;
+  outline: none;
+}
+
+.field-input::placeholder {
+  color: #AEAAA4;
+}
+
+.field-input:focus {
+  border-color: #111111;
+}
+
+/* ─── Hero Badge ─────────────────────────────────────────────── */
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: rgba(255,255,255,0.85);
+  border: 1px solid #DEDAD3;
+  padding: 0.45rem 1rem;
+  color: #6B6B6B;
+  backdrop-filter: blur(8px);
 }
