@@ -8,30 +8,33 @@ module.exports = {
     extend: {
       colors: {
         ink: {
-          DEFAULT: '#1B2430',
-          soft: '#2B3645',
+          DEFAULT: '#111111',
+          soft: '#2C2C2C',
+          muted: '#6B6B6B',
         },
         paper: {
-          DEFAULT: '#F2EEE4',
-          dark: '#E8E1D1',
-          line: '#C9C2AC',
+          DEFAULT: '#FAFAF8',
+          warm: '#F5F2ED',
+          dark: '#EAE7E0',
+          line: '#DEDAD3',
         },
-        oxblood: {
-          DEFAULT: '#8B2635',
-          dark: '#6E1E2A',
-          light: '#A8394A',
+        gold: {
+          DEFAULT: '#C9A96E',
+          dark: '#A8894E',
+          light: '#E2C99A',
         },
-        slate: {
-          accent: '#3F5C5A',
+        charcoal: {
+          DEFAULT: '#1C1C1C',
+          soft: '#2A2A2A',
         },
       },
       fontFamily: {
-        display: ['Fraunces', 'serif'],
-        body: ['"Source Sans 3"', 'sans-serif'],
-        mono: ['"IBM Plex Mono"', 'monospace'],
+        display: ['"Cormorant Garamond"', 'serif'],
+        body: ['Inter', 'sans-serif'],
+        sans: ['Inter', 'sans-serif'],
       },
       backgroundImage: {
-        grain: "radial-gradient(circle at 1px 1px, rgba(27,36,48,0.04) 1px, transparent 0)",
+        'subtle-grain': "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E\")",
       },
     },
   },
