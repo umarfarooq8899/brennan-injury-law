@@ -172,23 +172,14 @@ export default function Home() {
             </motion.div>
           </motion.div>
           {/* Gradient fades */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#F5F2ED] via-[#F5F2ED]/60 lg:via-[#F5F2ED]/30 to-transparent pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#F5F2ED]/80 via-transparent to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/60 lg:via-white/30 to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent pointer-events-none" />
         </div>
 
         <div className="relative max-w-6xl mx-auto px-5 md:px-8 w-full pt-32 pb-20 lg:pt-40 lg:pb-28">
           <div className="max-w-[580px]">
 
-            {/* Badge — floats */}
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: 'easeOut' }}
-              className="hero-badge mb-8 animate-float inline-flex"
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block" />
-              Accepting New Clients
-            </motion.div>
+
 
             {/* Heading — staggered line reveal */}
             <motion.div
@@ -780,7 +771,7 @@ export default function Home() {
               <StaggerItem key={i}>
                 <motion.div
                   className="result-card"
-                  whileHover={{ y: -4, boxShadow: '0 16px 40px rgba(0,0,0,0.10)', borderLeftColor: '#C9A96E' }}
+                  whileHover={{ y: -4, boxShadow: '0 16px 40px rgba(0,0,0,0.10)', borderLeftColor: '#000000' }}
                   transition={{ duration: 0.25 }}
                 >
                   <div className="flex items-start justify-between gap-3 mb-3">
