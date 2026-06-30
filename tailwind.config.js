@@ -8,24 +8,29 @@ module.exports = {
     extend: {
       colors: {
         ink: {
-          DEFAULT: '#111111',
-          soft: '#2C2C2C',
-          muted: '#6B6B6B',
+          DEFAULT: '#000000',
+          soft: '#262626',
+          muted: '#737373',
         },
         paper: {
-          DEFAULT: '#FAFAF8',
-          warm: '#F5F2ED',
-          dark: '#EAE7E0',
-          line: '#DEDAD3',
+          DEFAULT: '#FFFFFF',
+          warm: '#F5F5F5',
+          dark: '#E5E5E5',
+          line: '#E5E5E5',
         },
         gold: {
-          DEFAULT: '#C9A96E',
-          dark: '#A8894E',
-          light: '#E2C99A',
+          DEFAULT: '#000000',
+          dark: '#000000',
+          light: '#737373',
+        },
+        oxblood: {
+          DEFAULT: '#000000',
+          dark: '#171717',
+          light: '#737373',
         },
         charcoal: {
-          DEFAULT: '#1C1C1C',
-          soft: '#2A2A2A',
+          DEFAULT: '#000000',
+          soft: '#171717',
         },
       },
       fontFamily: {
