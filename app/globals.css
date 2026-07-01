@@ -435,3 +435,211 @@ select:focus-visible {
   color: #737373;
   backdrop-filter: blur(8px);
 }
+
+/* ─── Case Card ──────────────────────────────────────────────── */
+
+.case-card {
+  background: #FFFFFF;
+  border: 1px solid #E5E5E5;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.case-card:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.07);
+}
+
+/* ─── Thread Line (divider with top border) ──────────────────── */
+
+.thread-line {
+  border-top: 1px solid #E5E5E5;
+}
+
+/* ─── Tab Notch Button ───────────────────────────────────────── */
+
+.tab-notch {
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+}
+
+/* ─── Floating Label Inputs ──────────────────────────────────── */
+
+.field-group {
+  position: relative;
+}
+
+.field-group .field-label {
+  position: absolute;
+  left: 0.875rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  color: #737373;
+  pointer-events: none;
+  transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.field-group.textarea .field-label {
+  top: 1rem;
+  transform: none;
+}
+
+.field-group .field-float {
+  width: 100%;
+  background: #FFFFFF;
+  border: 1px solid #E5E5E5;
+  padding: 1.4rem 0.875rem 0.5rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  color: #000000;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.field-group .field-float:focus {
+  border-color: #000000;
+}
+
+.field-group .field-float:focus ~ .field-label,
+.field-group .field-float:not(:placeholder-shown) ~ .field-label {
+  top: 0.45rem;
+  transform: none;
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.field-group.textarea .field-float:focus ~ .field-label,
+.field-group.textarea .field-float:not(:placeholder-shown) ~ .field-label {
+  top: 0.35rem;
+}
+
+.field-group .field-error {
+  font-size: 0.72rem;
+  color: #B91C1C;
+  margin-top: 0.25rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.field-group .field-float.has-error {
+  border-color: #B91C1C;
+}
+
+/* ─── Step Progress Bar ──────────────────────────────────────── */
+
+.step-progress {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 2.5rem;
+}
+
+.step-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.375rem;
+  position: relative;
+  z-index: 1;
+}
+
+.step-node-circle {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: 1.5px solid #E5E5E5;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #737373;
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.step-node-circle.active {
+  background: #000000;
+  border-color: #000000;
+  color: #FFFFFF;
+}
+
+.step-node-circle.done {
+  background: #000000;
+  border-color: #000000;
+  color: #FFFFFF;
+}
+
+.step-node-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #737373;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+.step-node-label.active,
+.step-node-label.done {
+  color: #000000;
+}
+
+.step-connector {
+  flex: 1;
+  height: 1.5px;
+  background: #E5E5E5;
+  position: relative;
+  top: -0.625rem; /* align with circle center */
+  overflow: hidden;
+}
+
+.step-connector-fill {
+  height: 100%;
+  background: #000000;
+  transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* ─── Pulse Dot ──────────────────────────────────────────────── */
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(1.4); }
+}
+
+.pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #16a34a;
+  animation: pulseDot 1.8s ease-in-out infinite;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* ─── SVG Checkmark Draw ─────────────────────────────────────── */
+
+@keyframes drawCheck {
+  from { stroke-dashoffset: 60; }
+  to   { stroke-dashoffset: 0; }
+}
+
+.svg-check-path {
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+  animation: drawCheck 0.6s cubic-bezier(0.25, 1, 0.5, 1) 0.3s forwards;
+}
+
+@keyframes drawCircle {
+  from { stroke-dashoffset: 200; }
+  to   { stroke-dashoffset: 0; }
+}
+
+.svg-circle-path {
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  animation: drawCircle 0.7s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
